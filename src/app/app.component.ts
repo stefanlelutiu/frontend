@@ -24,9 +24,14 @@ export class AppComponent implements OnInit {
   }
 
   loadHealth(): void {
-    this.http.get<unknown>(`${environment.apiUrl}/health`).subscribe({
-      next: (data: unknown) => this.response = data,
-      error: (err: { message: string }) => this.response = { error: err.message }
+    const url = `${environment.apiUrl}/health`;
+
+    this.http.get<unknown>(url).subscribe({
+      next: (data: unknown) => this.response = { url, data },
+      error: (err: { message?: string }) => this.response = {
+        url,
+        error: err?.message || 'Unable to reach backend'
+      }
     });
   }
 }
