@@ -24,5 +24,5 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: 'upload'
           app_location: '/frontend'
-          output_location: 'dist/azure-demo-frontend'
+          output_location: 'dist'
           api_location: ''
